@@ -82,11 +82,20 @@ class LinkedListTest < Minitest::Test
     list.append("deep")
     list.append("dopple")
     list.insert(1,"weep")
-    assert_equal "doop deep weep dopple", list.to_string
+    assert_equal "doop weep deep dopple", list.to_string
     assert_equal "doop", list.head.data
-    assert_equal "deep", list.head.next_node.data
-    assert_equal "weep", list.head.next_node.next_node.data
+    assert_equal "weep", list.head.next_node.data
+    assert_equal "deep", list.head.next_node.next_node.data
     assert_equal "dopple", list.find_tail.data
+  end
+
+  def test_it_can_find_element
+    list = LinkedList.new
+    list.append("doop")
+    list.append("deep")
+    list.append("dopple")
+    list.insert(1,"weep")
+    assert_equal "deep, dopple", list.find(2,2)
   end
 
 

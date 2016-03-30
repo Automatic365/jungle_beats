@@ -6,7 +6,6 @@ attr_reader :head, :count
 
   def initialize
     @head = nil
-    @count = 0
     @string = []
   end
 
@@ -51,51 +50,32 @@ attr_reader :head, :count
     data
   end
 
-  def insert(index, data)
-    inserted_node = Node.new(data)
-    data = @string.insert(index +1, data)
+  def find(index, elements)
+    counter = 0
+    current = @head
+    until count == index
+      current_node = current_node.next_node
+      counter +=1
+    end
 
+
+
+  def insert(index, data)
+    @string.insert(index, data)
+      counter = 0
+      current = @head
+      if count < index
+        nil
+      else
+        until counter == index
+          previous = current
+          current = current.next_node
+          counter += 1
+        end
+        new_node = Node.new(data)
+        previous.next_node = new_node
+        new_node.next_node = current
+    end
   end
 
-
-
 end
-
-
-
-# @string << data
-# @count += 1
-# node = Node.new(data)
-# if @head.nil?
-#   @head = node
-# else
-#   add_node(node)
-# end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def to_string
-#   array = [@head.data]
-#   current_node = @head
-#   while current_node != nil
-#     array << current_node
-#     current_node = current_node.next_node
-#   end
-#   array << current_node
-#   array.join(" ")
-# end
