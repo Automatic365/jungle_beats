@@ -42,6 +42,29 @@ attr_reader :head, :count
     current_node
   end
 
+  def includes?(query)
+    current_node = @head
+    while current_node.next_node != nil
+      if current_node.data. == query
+        return true
+      else
+        current_node = current_node.next_node
+      end
+    end
+  end
+
+  def pop
+    current_node = @head
+    until current_node.next_node.next_node.nil?
+      current_node = current_node.next_node
+    end
+    last_data = current_node.next_node.data
+    current_node.next_node = nil
+    last_data
+    end
+
+
+
   def prepend(data)
     @string.unshift(data)
     head = Node.new(data)
@@ -51,14 +74,18 @@ attr_reader :head, :count
   end
 
   def find(index, elements)
+    array = []
     counter = 0
-    current = @head
-    until count == index
-      current_node = current_node.next_node
-      counter +=1
+    current_node = @head
+    index.times do
+    current_node = current_node.next_node
     end
-
-
+    elements.times do
+      array << current_node.data
+      current_node = current_node.next_node
+    end
+    array.join(" ")
+  end
 
   def insert(index, data)
     @string.insert(index, data)
